@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Main {
+
+    static boolean check_common(int a,int b){
+        int min;
+        if(a<b){
+            min = a;
+        }else {
+            min = b;
+        }
+        for(int i=2;i<min+1;i++){
+            if(a%i==0 && b%i==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int sum;
+        Scanner sc = new Scanner(System.in);
+        sum = sc.nextInt();
+        int num = 0;
+        int cur_num = num;
+        int denom = sum-num;
+        int cur_denom = denom;
+        while(Math.abs(num-denom) > 2){
+            num++;denom--;
+            if(!check_common(num,denom)){
+                cur_num = num;
+                cur_denom = denom;
+            }
+        }
+        System.out.println(cur_num+" "+cur_denom);
+    }
+}
